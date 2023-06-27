@@ -1,7 +1,7 @@
 # App-AgendaComNode.js #
 - Creating web program with node.js,
 - Add template,
-- Basead in mvc pattern
+- Basead in mvc pattern.
 
 # used node packages #
 - Express;
