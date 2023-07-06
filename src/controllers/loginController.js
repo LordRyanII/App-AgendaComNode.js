@@ -7,5 +7,8 @@ exports.index = (req, res) => {
 exports.register = (req, res) => {
     const login = new Login(req.body);
     login.register()
-    res.send(login.body);
+
+    //if(login.errors.length > 0)
+
+    res.send(login.errors);
 }
