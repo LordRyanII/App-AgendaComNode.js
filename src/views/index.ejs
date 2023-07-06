@@ -1,14 +1,45 @@
-<%- include('includes/head'); %>
+<%- include('includes/head') %>
+  <%- include('includes/nav') %>
 
-<section class="container">
-  <h1><%= csrfToken %></h1>
+    <body>
+      <!--Container-->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <!--Titulo-->
+          <div class="col-lg-8 my-3">
+            <h1 class="display text-center">
+              Agenda
+            </h1>
+            <!--Ação-->
+            <p class="text-center">
+              Seus contatos estão abaixo
+            </p>
+            <!--ALERTA-->
+            <div class="row">
+              <div class="col my-3">
+                <div class="alert alert-danger">
+                  Um erro qualquer
+                </div>
+              </div>
+            </div>
+            <div class="response-table">
+              <table class="table my-3">
+                <tr>
+                  <td>Ryan</td>
+                  <td>Menezes</td>
+                  <td>53981011805</td>
+                  <td>ryanoliveiram2015@gmail.com</td>
+                </tr>
 
-  <form action="/" method="post">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-    <label>Cliente</label>
-    <input type="text" name="cliente">
-    <button>Submit</button>
-  </form>
-</section>
+              </table>
+            </div>
 
-<%- include('includes/footer'); %>
+          </div>
+
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+
+
+      <%- include('includes/footer') %>
