@@ -18,15 +18,25 @@ class login { //Classe para construção dos dados para a base de dados
   async register() { //Registrar usuário no banco 
     this.valida(); //Evoca por callback a função de validação
     if (this.errors.length > 0) return;
+    const salt = bcryptjs.genSaltSync(); //Não precisa decorar, é um padrão para criar hashs de senha
+    this.body.password = bcryptjs.hashSync(this.body.password, salt);
+    this.userExiste();
+
+    if (this.errors.length > 0) return;
 
     try {
-      const salt = bcryptjs.genSaltSync(); //Não precisa decorar, é um padrão para criar hashs de senha
-      this.body.password = bcryptjs.hashSync(this.body.password, salt);
       this.user = await loginModel.create(this.body)
+
     } catch (error) {
       console.log(error)
     };
-    this.user = await loginModel.create(this.body)
+
+  }
+  async userExiste() {
+    const user = await loginModel.findOne({ email: this.body.email });
+
+    if (user) this.errors.push('Usuário já cadastrado na base de dados.')
+
   }
   valida() { //Validar campos
     this.cleanUp();
@@ -38,7 +48,7 @@ class login { //Classe para construção dos dados para a base de dados
     if (this.body.password.length < 3 || this.body.password.length >= 50) {
       this.errors.push('A senha precisa ter entre 3 e 50 caracteres.');
     }
-    
+
 
   }
   cleanUp() {
