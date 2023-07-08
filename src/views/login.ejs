@@ -11,7 +11,7 @@
             <h1 class="display text-center">
               Criar conta ou entrar
             </h1>
-            <!--Para mensagens de-->
+            <!--Para mensagens de erro ou avisos-->
             <%- include('includes/messages'); %>
             <!--Formulário de login-->
             <div class="row">
@@ -27,12 +27,12 @@
                   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <div class="mb-3">
                     <label>Endereço de Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <input type="email" class="form-control"
                       name="email">
                   </div>
                   <div class="mb-3">
                     <label>Defina a Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    <input type="password" class="form-control" name="password">
                   </div>
 
                   <button type="submit" class="btn btn-primary">Criar a minha conta</button>
@@ -46,17 +46,18 @@
                 <p>
                   Se você já tem uma conta faça o seu login abaixo
                 </p>
+
                 <!--Rota de criação de entrada-->
                 <form action="/login/login" method="POST">
                   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <div class="mb-3">
                     <label>Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <input type="email" class="form-control"
                       name="email">
                   </div>
                   <div class="mb-3">
                     <label>Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    <input type="password" class="form-control" name="password">
                   </div>
 
                   <button type="submit" class="btn btn-primary">Entrar</button>
@@ -69,4 +70,4 @@
           </div>
 
 
-          <%- include('includes/footer') %>
+          <%- include('./includes/footer') %>
