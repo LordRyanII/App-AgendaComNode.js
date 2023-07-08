@@ -13,9 +13,11 @@
 
 <!--Sucesso-->
 <% if(success.length > 0) { %>
+    <div class="col my-3">
     <div class="alert alert-success">
         <% success.forEach(msg => { %>
             <%= msg %> <br>
         <% }); %>
     </div>
+</div>
 <% } %>
