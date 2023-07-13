@@ -28,3 +28,35 @@ exports.register = async function (req, res) {
         return res.render('404');
     }
 };
+
+
+//Função que irá ser responsavél por pegar o body e cadastrar no banco
+exports.login = async function (req, res) {
+    try {
+        const login = new Login(req.body);
+        await login.login();
+
+        if (login.errors.length > 0) {
+            req.flash('errors', login.errors);
+            req.session.save(function () {
+                return res.redirect('/login/index');
+            });
+            return;
+        };
+
+        req.flash('success', 'SUCESSO! Usuário cadastrado na base de dados, feliz usuário?:)');
+        req.session.user = login.user;
+        req.session.save(function () {
+            return res.redirect('/login/index');
+        });
+    } catch (e) {
+        console.log(e);
+        return res.render('404');
+    }
+};
+
+
+exports.logout = (req, res) => {
+    req.session.destroy();
+    res.redirect('/')
+}

@@ -8,15 +8,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto"/>
+            <ul class="navbar-nav ms-auto" />
+            <% if(!user) {%>
                 <li class="nav-item">
                     <a class="nav-link" href="/login/index">Entrar</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/login/index">Login</a>
-                </li>
-            </ul>
+                <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/index">Link</a>
+                    </li>
+                    </ul>
         </div>
     </div>
 </nav>

@@ -23,18 +23,29 @@ class login { //Classe para construção dos dados para a base de dados
     this.userExiste();
 
     if (this.errors.length > 0) return;
+    this.user = await loginModel.create(this.body)
+    
 
-    try {
-      this.user = await loginModel.create(this.body)
+  }
+  async login () {
+    this.valida(); //Evoca por callback a função de validação
+    if (this.errors.length > 0) return;
+    this.user = await loginModel.findOne({ email: this.body.email });
 
-    } catch (error) {
-      console.log(error)
-    };
+    if(!this.user) {
+      this.errors.push('Usuário não existe');
+      return;
+    }
 
+    if(!bcryptjs.compareSync(this.body.password, this.user.password)){
+      this.errors.push("Senha incorreta");
+      this.user = null
+      return;
+    }
+    
   }
   async userExiste() {
     const user = await loginModel.findOne({ email: this.body.email });
-
     if (user) this.errors.push('Usuário já cadastrado na base de dados.')
 
   }
