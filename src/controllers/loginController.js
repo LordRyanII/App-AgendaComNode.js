@@ -56,7 +56,7 @@ exports.login = async function (req, res) {
 };
 
 
-exports.logout = (req, res) => {
+exports.logout = function(req, res) {
     req.session.destroy();
-    res.redirect('/')
-}
+    res.redirect('/');
+};
