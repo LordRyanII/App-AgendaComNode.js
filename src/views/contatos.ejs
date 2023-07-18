@@ -1,0 +1,63 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<body>
+  <!--Container-->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <!--Titulo-->
+      <div class="col-lg-8 my-3">
+        <h1 class="display text-center">
+          Contato
+        </h1>
+        <!--Ação-->
+        <p class="text-center">
+          Crie ou edite seu contato abaixo.
+        </p>
+        <!--Mensagens do sistema-->
+        <%- include('includes/messages') %>
+
+        <!--Formulário cadastro de contatos: -->
+        <form action="/contato/register" method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <div class="mb-3">
+            <!--Formulário cadastro de nome: -->
+            <label>Nome</label>
+            <input type="text" class="form-control" name="nome">
+          </div>
+          <div class="mb-3">
+            <!--Formulário cadastro de sobrenome: -->
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" name="sobrenome">
+          </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email">
+          </div>
+          <div class="mb-3">
+            <!--Formulário cadastro de telefone: -->
+            <label>Telefone</label>
+            <input type="text" class="form-control" name="telefone">
+          </div>
+          <div class="btn" style="width: 100%; margin: auto;">
+            <button type="submit" class="btn btn-primary" style="margin: auto; text-align: center;" id="btn_contact">
+              Registrar
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="col-lg-2"></div>
+  </div>
+  </div>
+
+
+  <%- include('includes/footer') %>
