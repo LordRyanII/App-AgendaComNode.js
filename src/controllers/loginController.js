@@ -2,6 +2,9 @@ const { async } = require('regenerator-runtime');
 const Login = require('../models/loginModels');
 
 exports.index = (req, res) => {
+    if(req.session.user){
+        return res.render('login-logado')
+    }
     return res.render('login')
 };
 
@@ -44,7 +47,7 @@ exports.login = async function (req, res) {
             return;
         };
 
-        req.flash('success', 'SUCESSO! Usuário cadastrado na base de dados, feliz usuário?:)');
+        req.flash('success', 'Bem-vindo de volta, você adentrou ao sistema:)');
         req.session.user = login.user;
         req.session.save(function () {
             return res.redirect('/login/index');
